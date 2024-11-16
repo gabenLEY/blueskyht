@@ -7,36 +7,36 @@ export type FeedItem = {
     creator: {
       did: string;
       handle: string;
-      displayName: string;
+      displayName?: string; // Make this optional
     };
     description: string;
     displayName: string;
     indexedAt: string;
-    labels: any[]; // Can be refined if the structure of labels is known
+    labels: any[];
     likeCount: number;
   };
   
+  
   export type FeedData = {
     feeds: FeedItem[];  // Array of FeedItem
-    cursor: string;      // Cursor for pagination or tracking
+    cursor: string;      // Cursor for pagination
   };
-
+  
   export type FeedProps = {
-    feedItems: FeedData; // Expecting FeedData type here, not just FeedItem[]
+    feedItems: FeedData; // Expecting FeedData type, which includes feeds and cursor
   };
-
+  
   export type FeedsProps = {
-    feedItems: FeedItem[];
+    feedItems: FeedItem[]; // Just the array of FeedItem
   };
-
+  
   export type Getter = {
-    // Example: define the properties of the headers or any getter logic
-    [key: string]: string; // You can adjust this based on the actual getter structure
+    [key: string]: string; // Define getter logic (headers)
   };
-
-  export type feedDataType = {
-    data: FeedData;
-    headers: Getter;
-    success : boolean
-  }
+  
+  export type FeedResponse = {
+    data: FeedData; // The response should contain the data as FeedData
+    success: boolean;
+    headers: Getter; // Optional: refine this based on actual header structure
+  };
   
