@@ -3,13 +3,13 @@ import Home from "~/components/Home";
 import { FeedData, FeedItem, FeedResponse } from "~/types/feedTypes"; // Import the types
 
 export default async function Homepage() {
-  // Type the response correctly
-  const response: FeedResponse | any = await agent.app.bsky.unspecced.getPopularFeedGenerators({
+  // Correctly type the response as FeedResponse
+  const response: FeedResponse = await agent.app.bsky.unspecced.getPopularFeedGenerators({
     limit: 100,
   });
 
   // Map the GeneratorView[] to FeedItem[] with proper handling for optional fields
-  const feeds: FeedItem[] = response.data.feeds.map((generatorView: any) => {
+  const feeds: FeedItem[] = response.data.feeds.map((generatorView) => {
     return {
       uri: generatorView.uri,
       cid: generatorView.cid,
