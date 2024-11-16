@@ -5,9 +5,10 @@ import { feedDataType } from "~/types/feedTypes";
 
 
 export default async function Homepage() {
-  const feeds: feedDataType = await agent.app.bsky.unspecced.getPopularFeedGenerators({
+  const feeds: any = await agent.app.bsky.unspecced.getPopularFeedGenerators({
     limit: 100,
   });
+  console.log(feeds)
   return (
     <div className="">
       <Home feedItems={feeds.data} />

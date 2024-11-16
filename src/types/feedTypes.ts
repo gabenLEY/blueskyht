@@ -3,7 +3,7 @@ export type FeedItem = {
     uri: string;
     cid: string;
     did: string;
-    avatar: string;
+    avatar?: string;
     creator: {
       did: string;
       handle: string;
@@ -29,7 +29,14 @@ export type FeedItem = {
     feedItems: FeedItem[];
   };
 
+  export type Getter = {
+    // Example: define the properties of the headers or any getter logic
+    [key: string]: string; // You can adjust this based on the actual getter structure
+  };
+
   export type feedDataType = {
-    data: any;
+    data: FeedData;
+    headers: Getter;
+    success : boolean
   }
   
