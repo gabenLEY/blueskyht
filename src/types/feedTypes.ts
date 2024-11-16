@@ -12,7 +12,7 @@ export type FeedItem = {
     description: string;
     displayName: string;
     indexedAt: string;
-    labels: any[];
+    labels: string[];
     likeCount: number;
   };
   
