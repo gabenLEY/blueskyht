@@ -1,5 +1,4 @@
 import { agent } from "~/lib/api";
-import Feeds from "~/components/Feed";
 import Home from "~/components/Home";
 export * from '../types/feedTypes';
 import { feedDataType } from "~/types/feedTypes";

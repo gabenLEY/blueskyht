@@ -24,4 +24,12 @@ export type FeedItem = {
   export type FeedProps = {
     feedItems: FeedData; // Expecting FeedData type here, not just FeedItem[]
   };
+
+  export type FeedsProps = {
+    feedItems: FeedItem[];
+  };
+
+  export type feedDataType = {
+    data: any;
+  }
   

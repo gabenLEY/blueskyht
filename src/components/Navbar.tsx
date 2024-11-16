@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <div className="text-white text-2xl font-bold">
-          <a href="/">BlueSky 🇭🇹</a>
+          <Link href="/">BlueSky 🇭🇹</Link>
         </div>
 
         {/* Links for larger screens */}
