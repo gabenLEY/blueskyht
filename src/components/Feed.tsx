@@ -1,18 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Feeds from "./Feeds";
-import { FeedData, FeedProps, FeedItem } from "~/types/feedTypes";
+import { FeedProps, FeedItem } from "~/types/feedTypes";
 
 const Feed: React.FC<FeedProps> = ({ feedItems }) => {
   const [feedsItem, setFeedsItem] = useState<FeedItem[]>([]);
-  const [feed, setFeed] = useState<FeedData>({
-    feeds: [],
-    cursor: "",
-  });
+ 
 
   useEffect(() => {
     setFeedsItem(feedItems.feeds); // feedItems is now a FeedData object
-    setFeed(feedItems);
+    //setFeed(feedItems);
   }, [feedItems]);
 
   return (

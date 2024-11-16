@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,10 +20,10 @@ const Navbar = () => {
 
         {/* Links for larger screens */}
         <div className="hidden md:flex space-x-6">
-          <a href="/" className="text-white hover:text-gray-200">Home</a>
-          <a href="/" className="text-white hover:text-gray-200">Profile</a>
-          <a href="/" className="text-white hover:text-gray-200">Notifications</a>
-          <a href="/" className="text-white hover:text-gray-200">Settings</a>
+          <Link href="/" className="text-white hover:text-gray-200">Home</Link>
+          <Link href="/" className="text-white hover:text-gray-200">Profile</Link>
+          <Link href="/" className="text-white hover:text-gray-200">Notifications</Link>
+          <Link href="/" className="text-white hover:text-gray-200">Settings</Link>
         </div>
 
         {/* Hamburger Menu for small screens */}
@@ -49,10 +50,10 @@ const Navbar = () => {
       {/* Dropdown menu for small screens */}
       {isMenuOpen && (
         <div className="md:hidden bg-blue-600 text-white space-y-4 px-4 py-3">
-          <a href="/" className="block hover:text-gray-200">Home</a>
-          <a href="/profile" className="block hover:text-gray-200">Profile</a>
-          <a href="/notifications" className="block hover:text-gray-200">Notifications</a>
-          <a href="/settings" className="block hover:text-gray-200">Settings</a>
+          <Link href="/" className="block hover:text-gray-200">Home</Link>
+          <Link href="/profile" className="block hover:text-gray-200">Profile</Link>
+          <Link href="/notifications" className="block hover:text-gray-200">Notifications</Link>
+          <Link href="/settings" className="block hover:text-gray-200">Settings</Link>
         </div>
       )}
     </nav>
