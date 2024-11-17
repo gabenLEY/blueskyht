@@ -1,6 +1,6 @@
 import { agent } from "~/lib/api";
 import Home from "~/components/Home";
-import { FeedData, FeedItem, FeedResponse } from "~/types/feedTypes"; // Import the types
+import { FeedData, FeedResponse } from "~/types/feedTypes"; // Import the types
 
 type Getter = { [key: string]: string };
 
