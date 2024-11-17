@@ -35,7 +35,7 @@ export type FeedItem = {
   };
   
   export type FeedResponse = {
-    data: FeedData; // The response should contain the data as FeedData
+    data: FeedData[]; // The response should contain the data as FeedData
     success: boolean;
     headers: Getter; // Optional: refine this based on actual header structure
   };
