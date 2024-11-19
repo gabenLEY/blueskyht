@@ -52,7 +52,7 @@ const Profile: React.FC = () => {
     displayName: user?.displayName || "",
     description: user?.description || "",
   });
-  const [isUpdate, setIsUpdate] = useState<boolean>(false)
+  //const [isUpdate, setIsUpdate] = useState<boolean>(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -110,7 +110,7 @@ const Profile: React.FC = () => {
       const data = await response.json();
       if(data === true){
          toast.success("Profile update successfully")
-         setIsUpdate(true)
+         //setIsUpdate(true)
          if(session){
             load_profile(session.user.bskySession.handle)
           }

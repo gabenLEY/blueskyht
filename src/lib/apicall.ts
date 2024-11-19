@@ -1,9 +1,8 @@
 import { type Agent} from '@atproto/api';
-import { FeedResponse } from '~/types/feed';
 import { serverAgent } from './cors/agent/clientAgent';
 
 
-export const loadPopularFeeds = async (agent?: Agent, query? : string) : Promise<any> => {
+export const loadPopularFeeds = async (agent?: Agent, query? : string) => {
   try {
     if (!agent) agent = await serverAgent();
     const response = await agent.app.bsky.unspecced.getPopularFeedGenerators({
@@ -17,7 +16,7 @@ export const loadPopularFeeds = async (agent?: Agent, query? : string) : Promise
 }
 
 // Load feeds after ensuring session
-export const loadTimeline = async (agent?: Agent) : Promise<any> => {
+export const loadTimeline = async (agent?: Agent) => {
   try {
     if (!agent) agent = await serverAgent();
     const response = await agent.getTimeline({ limit: 100 });

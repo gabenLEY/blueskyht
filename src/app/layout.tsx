@@ -1,7 +1,5 @@
 import { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import { getSession } from "next-auth/react";
 import SessionWrapper from "../components/layout/SessionWrapper"; // Import the new SessionWrapper
 
 
@@ -15,10 +13,6 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-
-  const session = await getSession();
-
-  console.log("The session",session)
 
   return (
     <html lang="en">

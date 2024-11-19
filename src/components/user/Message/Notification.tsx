@@ -3,13 +3,13 @@ import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 import { NotificationType } from '~/types/message';
 
-
-const Notification: React.FC<NotificationType> = ({ author, reason, indexedAt, labels, isRead, record, reasonSubject}) => {
+//labels, isRead, record, reasonSubject
+const Notification: React.FC<NotificationType> = ({ author, reason, indexedAt,isRead}) => {
   return (
-    <div className="flex items-center gap-4 p-4 border  shadow-md hover:bg-gray-50 transition bg-white cursor-pointer">
+    <div className={`flex items-center gap-4 p-4 border  shadow-md hover:bg-gray-50 transition  cursor-pointer ${isRead ? "bg-white" : "bg-blue-200"}`}>
       {/* Profile Picture */}
       
-
+     
       {/* Notification Details */}
       <div className="flex-1">
         <div className='flex gap-3'>

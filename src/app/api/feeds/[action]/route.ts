@@ -54,6 +54,7 @@ async function loadPopularFeedsHandler() {
     const feeds = await loadPopularFeeds(); // Assuming loadFeeds fetches the feed data
     return NextResponse.json(feeds);
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ error: 'Failed to load feeds' }, { status: 500 });
   }
 }
@@ -65,7 +66,8 @@ async function likeFeedsHandler(request : Request){
     const likes = await likeFeeds(uri, cid);
     return NextResponse.json(likes);
   } catch (error) {
-    console.log()
+    console.log(error);
+    return NextResponse.json({ error: 'Failed to like feeds' }, { status: 500 });
   }
 }
 
@@ -76,7 +78,8 @@ async function getProfileMyProfileHandler(request : Request){
     const likes = await getProfileMyProfile(handle);
     return NextResponse.json(likes);
   } catch (error) {
-    console.log()
+    console.log(error);
+    return NextResponse.json({ error: 'Failed to get profile' }, { status: 500 });
   }
 }
 
@@ -88,6 +91,7 @@ async function editProfileHandler(request : Request){
     return NextResponse.json(likes);
   } catch (error) {
     console.log(error);
+    return NextResponse.json({ error: 'Failed to edit profile' }, { status: 500 });
   }
 }
 
@@ -99,5 +103,6 @@ async function getNotificationsHandler(request : Request){
     return NextResponse.json(notification);
   } catch (error) {
     console.log(error);
+    return NextResponse.json({ error: 'Failed to notify' }, { status: 500 });
   }
 }

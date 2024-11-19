@@ -1,7 +1,6 @@
 import React from 'react';
-import Footer from '../Footer';  // Import your Footer component
+import Footer from '../Footer'; 
 import Navbar from '../includs/Navbar';
-import SessionWrapper from './SessionWrapper';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (

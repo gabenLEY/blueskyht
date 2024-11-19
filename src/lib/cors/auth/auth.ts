@@ -141,18 +141,6 @@ export const authOptions: NextAuthOptions = {
       return await handleSessionCallback(session, token as ExtendedJWT);
     },
   },
-  //secret: process.env.NEXTAUTH_SECRET,
-  // cookies: {
-  //   sessionToken: {
-  //     name: 'next-auth.session-token',  // Cookie name
-  //     options: {
-  //       httpOnly: true,  // Ensures it's not accessible via JavaScript
-  //       secure: process.env.NODE_ENV === 'production',  // Use secure cookies in production
-  //       sameSite: 'lax',  // CSRF protection
-  //       maxAge: 60 * 60,  // 1 hour session duration
-  //     },
-  //   },
-  // },
 } satisfies NextAuthOptions;
 
 

@@ -94,34 +94,20 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
         body: JSON.stringify({ uri : uriFeed, cid : cidFeed }), // Sending feedId as an argument
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to like feed');
-      }
+      // if (!response.ok) {
+      //   throw new Error('Failed to like feed');
+      // }
 
       const data = await response.json();
-      console.log(data); // Handle response from the backend (e.g., updated feed info)
-      //setLikedFeeds((prev) => [...prev, data]); // Add liked feed to state
+      return;
+      //console.log(data);
     } catch (error) {
-      console.error('Error liking feed:', error);
+      console.error(error);
     }
   };
 
-  const un_like_feeds = async function(uri_feed : string){
-   
-  }
-
   const handleLike = (cid: string, uri : string) => {
-    //console.log(`Liked post: ${id}`);
     like_feeds(cid, uri);
-  };
-
-  const handunleLike = (cid: string) => {
-    //console.log(`Liked post: ${id}`);
-    un_like_feeds(cid);
-  };
-
-  const handleComment = (id: string) => {
-    console.log(`Commented on post: ${id}`);
   };
 
   const skeletonData = new Array(30).fill(null);

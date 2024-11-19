@@ -27,8 +27,8 @@ export interface NotificationType {
   author: NotificationAuthor; // required
   reason: NotificationReason; // required
   reasonSubject?: string; // at-uri (optional)
-  record: Record<string, unknown>; // required, generic object
-  isRead: boolean; // required
+  record?: Record<string, unknown>; // required, generic object
+  isRead?: boolean; // required
   indexedAt: string; // date-time required
   labels?: NotificationLabel[]; // optional array of objects
 }

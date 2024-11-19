@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { FaTwitter } from 'react-icons/fa';
+import { GiNightSky } from "react-icons/gi";
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
@@ -9,12 +9,10 @@ const Login: React.FC = () => {
   const r = useRouter();
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
 
     try {
 
@@ -26,17 +24,16 @@ const Login: React.FC = () => {
       });
 
       if (result?.error) {
-        setError('Invalid login credentials. Please try again.');
+        console.log(result?.error)
+        toast.error('Wrong credential');
       } else {
         toast.success('Successfully created!');
         toast.loading("wait....")
-        //console.log(result)
-        // Redirect or handle success
-        r.push('/home')// Redirect to dashboard
+        r.push('/home')
       }
-    } catch (err) {
-      console.error('Login error:', err);
-      setError('Something went wrong. Please try again.');
+    } catch (err : any) {
+      console.error(err);
+      toast.error('Wrong credential');
     }
   }
 
@@ -44,10 +41,10 @@ const Login: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-blue-100">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
         <div className="flex justify-center mb-4 text-blue-500">
-          <FaTwitter size={50} />
+          <GiNightSky size={50} />
         </div>
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Log in to Twitter
+        <h2 className="text-2xl font-bold text-center text-blue-500 mb-6">
+          Log in to BskyHT
         </h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -62,7 +59,7 @@ const Login: React.FC = () => {
               id="identifier"
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              placeholder="Enter your email or username"
+              placeholder="bksky username"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
@@ -78,7 +75,7 @@ const Login: React.FC = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              placeholder="password"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
@@ -96,6 +93,9 @@ const Login: React.FC = () => {
               Sign up
             </a>
           </p>
+          <div>
+            <p className='text-center text-xs text-red-500 font-bold'>we still in beta mode</p>
+          </div>
         </div>
       </div>
       <Toaster />

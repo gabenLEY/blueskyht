@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoSettings } from "react-icons/io5";
-import { SlFeed } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 import { MdSettingsApplications } from "react-icons/md";
 import { IoNotificationsCircleSharp } from "react-icons/io5";
