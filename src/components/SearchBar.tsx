@@ -16,7 +16,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center gap-2 border rounded-xl px-2 w-full max-w-md">
+    <div className="flex items-center gap-2 border rounded-xl px-2 w-full">
       {/* Search Icon */}
       <FiSearch className="text-gray-500 text-xl" />
       {/* Input Field */}
