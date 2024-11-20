@@ -105,7 +105,9 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
               <SkeletonFeed key={index} />
             ))
           ) : (visibleFeeds.map((item , index) => {
+            /* eslint-disable @typescript-eslint/no-explicit-any */
               const { post } : any = item;
+              /* eslint-disable @typescript-eslint/no-explicit-any */
               return (
                 <div key={index} className="bg-white shadow-lg p-6 border-t">
                   <div className="flex justify-between">

@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
 
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -36,6 +36,7 @@ const Login: React.FC = () => {
       toast.error('Wrong credential');
     }
   }
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-100">

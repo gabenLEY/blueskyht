@@ -5,15 +5,16 @@ import { createAgent } from '~/lib/cors/agent/createAgent';
 import { jwtDecode } from 'jwt-decode';
 import { JWT } from 'next-auth/jwt';
 
-// Extend JWT type to include User properties
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface ExtendedJWT extends JWT {
   id: string;
   service: string;
   handle: string;
   email: string;
   emailConfirmed: boolean;
-  bskySession: any; // Adjust this type according to the actual shape of your session
+  bskySession: any; 
 }
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 interface Credentials {
   handle: string;
