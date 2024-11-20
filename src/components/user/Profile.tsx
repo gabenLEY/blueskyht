@@ -119,7 +119,7 @@ const Profile: React.FC = () => {
         toast.error("Profile not update check you data")
         //setIsUpdate(false)
       }
-      console.log(data); // Handle response from the backend (e.g., updated feed info)
+      //console.log(data); // Handle response from the backend (e.g., updated feed info)
       //setLikedFeeds((prev) => [...prev, data]); // Add liked feed to state
     } catch (error) {
       console.error('Error liking feed:', error);
