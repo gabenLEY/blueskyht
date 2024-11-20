@@ -1,6 +1,6 @@
 import { HandleResolver } from "@atproto/identity";
 
-export const resolveDid = async (handle: string): Promise<string> => {
+export const resolveDid = async (handle: string) => {
 
   if (typeof window !== "undefined") {
      throw new Error("resolveDid must be used in a server-side environment.");

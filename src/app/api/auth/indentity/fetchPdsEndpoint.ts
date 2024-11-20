@@ -1,4 +1,4 @@
-export const fetchPdsEndpoint = async (did: string): Promise<string> => {
+export const fetchPdsEndpoint = async (did: string) => {
     const response = await fetch(`https://plc.directory/${did}`);
     if (!response.ok) {
       throw new Error("Failed to fetch DID document");

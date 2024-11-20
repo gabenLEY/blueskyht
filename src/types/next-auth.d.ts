@@ -26,4 +26,4 @@ declare module "next-auth/jwt" {
   }
 }
 
-declare NextAuth;
+//declare NextAuth;

@@ -27,7 +27,7 @@ const Login: React.FC = () => {
         console.log(result?.error)
         toast.error('Wrong credential');
       } else {
-        toast.success('Successfully created!');
+        toast.success("Successfully created!");
         toast.loading("wait....")
         r.push('/home')
       }
@@ -88,7 +88,7 @@ const Login: React.FC = () => {
         </form>
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-600">
-            Don't have an account?{' '}
+            Do not have an account?
             <a href="#" className="text-blue-500 hover:underline">
               Sign up
             </a>

@@ -8,6 +8,7 @@ export const serverAgent = async function(){
         }
         return agent;
     } catch (error) {
+        console.log(error)
         throw new Error("Cannot get agent");
     }
 }

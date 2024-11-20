@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-//import { IoMdHeart } from "react-icons/io";
 import { BiRepost } from "react-icons/bi";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { FaRegComment } from "react-icons/fa";
@@ -11,23 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 import SkeletonFeed from "./utils/SkeletonFeed";
 
-// Skeleton Loader Component
-// const SkeletonFeed = () => (
-//   <div className="bg-white shadow-lg p-6 border-t animate-pulse">
-//     <div className="flex items-center gap-4">
-//       <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
-//       <div>
-//         <div className="w-32 h-4 bg-gray-300 rounded-md"></div>
-//         <div className="w-24 h-3 bg-gray-200 rounded-md mt-2"></div>
-//       </div>
-//     </div>
-//     <div className="w-full h-16 bg-gray-200 rounded-md mt-4"></div>
-//     <div className="flex gap-8 items-center mt-4">
-//       <div className="w-10 h-10 bg-gray-200 rounded-md"></div>
-//       <div className="w-10 h-10 bg-gray-200 rounded-md"></div>
-//     </div>
-//   </div>
-// );
 
 const timeAgo = (isoString: string): string => {
   const date = new Date(isoString);
@@ -98,7 +80,8 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
       //   throw new Error('Failed to like feed');
       // }
 
-      const data = await response.json();
+      await response.json();
+
       return;
       //console.log(data);
     } catch (error) {
@@ -113,9 +96,7 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
   const skeletonData = new Array(30).fill(null);
 
   const isDataValid = visibleFeeds.length > 0;
-
-
-
+  
   return (
       <div className="max-w-xl mx-auto">
         <div>

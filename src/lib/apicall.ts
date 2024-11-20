@@ -77,7 +77,7 @@ export const unRepostFeeds = async (agent : Agent, uri_feed: string): Promise<st
 };
 
 // See profile
-export const seeProfile = async (agent : Agent, actorId: string): Promise<any | null> => {
+export const seeProfile = async (agent : Agent, actorId: string) => {
   try {
     const { data } = await agent.getProfile({ actor: actorId });
     return data;
@@ -159,7 +159,7 @@ export const createPost = async (agent : Agent, text: string): Promise<string | 
   }
 };
 
-export const getNotifications = async ( cursor?: string, agent?: Agent,) => {
+export const getNotifications = async ( cursor?: string, agent?: Agent) => {
   try {
   if (!agent) agent = await serverAgent();
   const notifications = await agent.listNotifications({

@@ -43,7 +43,7 @@ const TimeLineContainer: React.FC = () => {
   return (
     <div>
      <div>
-       <Feeds onClickBtn={(data : any) : any =>{
+       <Feeds onClickBtn={(data) =>{
            console.log(data)
        }} />
      </div>

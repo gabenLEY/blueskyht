@@ -123,15 +123,6 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/',
   },
-  // session: {
-  //   strategy: 'jwt',
-  //   maxAge: 60 * 60,  // 1 hour session expiration time
-  //   updateAge: 60 * 30, // Session will be refreshed every 30 minutes
-  // },
-  // jwt: {
-  //   secret: process.env.NEXTAUTH_SECRET, // Reuse the same secret for JWT signing
-  //   maxAge: 60 * 60, // Ensure this aligns with session maxAge
-  // },
   callbacks: {
     async jwt({ token, user }) {
       return await handleJwtCallback(token as ExtendedJWT, user);
