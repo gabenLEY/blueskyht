@@ -144,13 +144,13 @@ const Profile: React.FC = () => {
 
   React.useEffect(()=>{
     if(user !== null){
-     console.log(user)
+     //console.log(user)
      setProfile({
       displayName: user.displayName || "",
       description: user.description || "",
     });
     }
-    console.log("user")
+    //console.log("user")
    },[isUser])
 
   if (status === 'loading') {

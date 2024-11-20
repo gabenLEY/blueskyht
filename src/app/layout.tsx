@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon-32x32.png",
     apple: "/apple-touch-icon.png",
   },
-  themeColor: "#1E90FF", // Update with your brand's theme color
+  //themeColor: "#1E90FF", // Update with your brand's theme color
 };
 
 // Fetch session using getSession inside RootLayout

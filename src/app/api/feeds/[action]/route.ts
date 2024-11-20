@@ -5,8 +5,8 @@ import { loadTimeline, likeFeeds, loadPopularFeeds, getProfileMyProfile, editPro
 type ActionType = 'time-line' | 'like' | 'update' | 'load-popular' | 'get-my-profile' | 'edit-profile' | 'get-notification';
 
 // Export the GET method
-export async function GET(request: Request, { params }: { params: { action: ActionType } }) {
-  const { action } = params; // Directly destructure the action from params
+export async function GET(request: Request, { params }: { params: Promise<{ action: ActionType }> }) {
+  const { action } = await params; // Directly destructure the action from params
 
   switch (action) {
     case 'time-line':
@@ -19,8 +19,8 @@ export async function GET(request: Request, { params }: { params: { action: Acti
 }
 
 // Export the POST method
-export async function POST(request: Request, { params }: { params: { action: ActionType } }) {
-  const { action } = params; // Directly destructure the action from params
+export async function POST(request: Request, { params }: { params: Promise<{ action: ActionType }> }) {
+  const { action } = await params; 
 
   switch (action) {
     case 'like':
