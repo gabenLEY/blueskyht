@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const fetchPdsEndpoint = async (did: string) => {
     const response = await fetch(`https://plc.directory/${did}`);
     if (!response.ok) {
@@ -6,7 +7,6 @@ export const fetchPdsEndpoint = async (did: string) => {
   
     const didDocument = await response.json();
     const service = didDocument.service?.find((entry: any) => entry.id === "#atproto_pds");
-  
     if (!service || !service.serviceEndpoint) {
       throw new Error("PDS service not found in DID document");
     }

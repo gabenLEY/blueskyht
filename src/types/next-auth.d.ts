@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import NextAuth from "next-auth";
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AtpSessionData } from "atp-library";
 declare module "next-auth" {
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
@@ -26,5 +24,3 @@ declare module "next-auth/jwt" {
     user: User;
   }
 }
-
-//declare NextAuth;
