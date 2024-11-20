@@ -127,7 +127,7 @@ const Profile: React.FC = () => {
   };
 
   const handleSave = () => {
-    console.log("Profile saved:", profile);
+    //console.log("Profile saved:", profile);
     const { displayName,  description} = profile;
     edit_profile(displayName, description)
     // Add your save logic here (e.g., API call)
