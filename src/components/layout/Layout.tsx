@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../Footer'; 
 import Navbar from '../includs/Navbar';
-import FloatingButton from '../utils/FloatingButton';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (

@@ -34,7 +34,6 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
   const [visibleFeeds, setVisibleFeeds] = useState<Post[]>([]);
   const [feedCount, setFeedCount] = useState(10);
   const [hasMore, setHasMore] = useState(true);
-  const [likeSet, setLikeSet] = useState();
 
   useEffect(() => {
     if (!postItems || postItems.length === 0) {

@@ -111,7 +111,7 @@ const Navbar = () => {
         </div>
       )}
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <Modal isOpen={isModalOpen}>
         <div>
             <div className="text-gray-600 mb-6 space-y-2">
               <div>
