@@ -1,7 +1,6 @@
 import { type Agent} from '@atproto/api';
 import { serverAgent } from './cors/agent/clientAgent';
 
-
 export const loadPopularFeeds = async (agent?: Agent, query? : string) => {
   try {
     if (!agent) agent = await serverAgent();
@@ -27,8 +26,10 @@ export const loadTimeline = async (agent?: Agent) => {
   }
 };
 
+// Function to fetch Haiti-related posts
+
 // Like feeds
-export const likeFeeds = async (uri_feed: string, cid_feed: string, agent?: Agent): Promise<string | null> => {
+export const like = async (uri_feed: string, cid_feed: string, agent?: Agent): Promise<string | null> => {
   try {
     if (!agent) agent = await serverAgent();
     const { uri } = await agent.like(uri_feed, cid_feed);
@@ -40,9 +41,27 @@ export const likeFeeds = async (uri_feed: string, cid_feed: string, agent?: Agen
   }
 };
 
-// Unlike feeds
-export const unLikeFeeds = async (agent : Agent, uri_feed: string): Promise<string | null> => {
+
+
+// Like feeds
+export const getLikes = async (uri_front: string, cid_front: string, agent?: Agent) => {
   try {
+    if (!agent) agent = await serverAgent();
+    const data = await agent.app.bsky.feed.getLikes({
+      uri : uri_front, cid : cid_front
+    });
+    console.log('Like successful, URI:', data);
+    return data;
+  } catch (error) {
+    console.error('Error liking feed:', error);
+    return null; // Return null to indicate the like operation failed
+  }
+};
+
+// Unlike feeds
+export const unLike = async ( uri_feed: string, agent?: Agent): Promise<string | null> => {
+  try {
+    if (!agent) agent = await serverAgent();
     await agent.deleteLike(uri_feed);
     console.log('Unliked feed successfully');
     return 'Disliked successfully';
@@ -53,8 +72,9 @@ export const unLikeFeeds = async (agent : Agent, uri_feed: string): Promise<stri
 };
 
 // Repost feeds
-export const repostFeeds = async (agent : Agent, uri_feed: string, cid_feed: string): Promise<string | null> => {
+export const rePost = async (uri_feed: string, cid_feed: string, agent?: Agent): Promise<string | null> => {
   try {
+    if (!agent) agent = await serverAgent();
     const { uri } = await agent.repost(uri_feed, cid_feed);
     console.log('Repost successful, URI:', uri);
     return uri;
@@ -145,10 +165,12 @@ export const unFollow = async (agent : Agent, did_feed: string): Promise<string 
 };
 
 // Create post
-export const createPost = async (agent : Agent, text: string): Promise<string | null> => {
+export const createPost = async ( text: string, agent?: Agent,): Promise<string | null> => {
   try {
+    if (!agent) agent = await serverAgent();
     await agent.post({
       text,
+      //langs,
       createdAt: new Date().toISOString(),
     });
     console.log('Post created successfully');

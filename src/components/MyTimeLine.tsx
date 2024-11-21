@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { BiRepost } from "react-icons/bi";
 import { IoIosHeartEmpty } from "react-icons/io";
+import { FaHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
 import { IMAGES } from "../constants/images";
 import { FeedsProps, Post } from "~/types/feed";
@@ -33,6 +34,7 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
   const [visibleFeeds, setVisibleFeeds] = useState<Post[]>([]);
   const [feedCount, setFeedCount] = useState(10);
   const [hasMore, setHasMore] = useState(true);
+  const [likeSet, setLikeSet] = useState();
 
   useEffect(() => {
     if (!postItems || postItems.length === 0) {
@@ -66,7 +68,7 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasMore, feedCount]);
 
-  const like_feeds = async (uriFeed : string, cidFeed : string) => {
+  const like = async (uriFeed : string, cidFeed : string) => {
     try {
       const response = await fetch(`/api/feeds/like`, {
         method: 'POST',
@@ -74,6 +76,25 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ uri : uriFeed, cid : cidFeed }), // Sending feedId as an argument
+      });
+
+      await response.json();
+
+      return;
+      //console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const unlike = async (uriFeed : string) => {
+    try {
+      const response = await fetch(`/api/feeds/un-like`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ uri : uriFeed}), // Sending feedId as an argument
       });
 
       // if (!response.ok) {
@@ -89,13 +110,36 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
     }
   };
 
+  const rePost = async (uriFeed : string, cidFeed : string) => {
+    try {
+      const response = await fetch(`/api/feeds/repost`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ uri : uriFeed, cid : cidFeed }), // Sending feedId as an argument
+      });
+
+      await response.json();
+
+      return;
+      //console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleLike = (cid: string, uri : string) => {
-    like_feeds(cid, uri);
+    like(cid, uri);
   };
 
   const skeletonData = new Array(30).fill(null);
 
   const isDataValid = visibleFeeds.length > 0;
+
+// if(isDataValid){
+//   console.log(visibleFeeds)
+// }
   
   return (
       <div className="max-w-xl mx-auto">
@@ -107,12 +151,24 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
           ) : (visibleFeeds.map((item , index) => {
             /* eslint-disable @typescript-eslint/no-explicit-any */
               const { post } : any = item;
+              const { reason } : any = item;
               /* eslint-disable @typescript-eslint/no-explicit-any */
               return (
                 <div key={index} className="bg-white shadow-lg p-6 border-t">
+                  <div className="mb-2">
+                  {reason && (
+                        <div className="flex gap-2 items-center">
+                          <BiRepost
+                            className="text-lg text-green-500 cursor-pointer"
+                            onClick={() => rePost(post.uri, post.cid)}
+                           /> <p className="text-sm">Reposted by {reason.by.displayName === post.author.displayName ? "you" : reason.by.displayName}</p>
+                        </div>
+                      )}
+                  </div>
                   <div className="flex justify-between">
+                   
                   <Link href="/home">
-                     <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4">
                     <Image
                       src={post.author.avatar || IMAGES.AVATAR}
                       alt={post.author.displayName || "Anonymous"}
@@ -149,11 +205,17 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
 
                   <div className="flex gap-[80px] items-center mt-4">
                     <div className="flex gap-1 items-center">
-                      <IoIosHeartEmpty
+                      {post.viewer.like === undefined ? (
+                        <IoIosHeartEmpty
                         className="text-2xl text-gray-700 cursor-pointer"
-                        //onClick={() => handunleLike(post.uri)}
                         onClick={() => {handleLike(post.uri, post.cid)}}
                       />
+                        ) : (
+                          <FaHeart
+                        className="text-2xl text-red-500 cursor-pointer"
+                        onClick={() => {unlike(post.uri)}}
+                      />
+                        )}
                       <p className="text-gray-700">{post.likeCount || 0}</p>
                     </div>
                     <div className="flex items-center gap-1">
@@ -164,10 +226,15 @@ const Feeds: React.FC<FeedsProps> = ({ postItems }) => {
                       <p className="text-gray-700">{post.replyCount}</p>
                     </div>
                     <div className="flex items-center gap-1">
-                      <BiRepost
-                        className="text-3xl text-gray-700 cursor-pointer"
-                        //onClick={() => handleComment(post.uri)}
+                      {reason !== undefined ? (
+                        <BiRepost
+                        className="text-3xl text-green-500 cursor-pointer"
+                        onClick={() => rePost(post.uri, post.cid)}
                       />
+                      ):(<BiRepost
+                        className="text-3xl text-gray-700 cursor-pointer"
+                        onClick={() => rePost(post.uri, post.cid)}
+                      />)}
                       <p className="text-gray-700">{post.repostCount}</p>
                     </div>
                   </div>

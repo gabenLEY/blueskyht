@@ -36,6 +36,28 @@ type Author = {
     threadMuted: boolean;
     embeddingDisabled: boolean;
   };
+
+export type Reason = 
+  | ReasonRepost 
+  | ReasonPin;
+
+export type ReasonRepost = {
+  type: 'app.bsky.feed.defs.reasonRepost';
+  by: ReasonBy;
+};
+
+export type ReasonPin = {
+  type: 'app.bsky.feed.defs.reasonPin';
+  by: ReasonBy;
+};
+
+export type ReasonBy = {
+  did: string; // Decentralized Identifier
+  handle: string; // User handle
+  displayName: string; // Display name of the user, max 640 characters
+  avatar: string; // URI to the user's avatar
+};
+
   
   export type Post = {
     uri: string;
@@ -62,6 +84,7 @@ type Author = {
 
   export type FeedsProps = {
     postItems: Post[]; 
+    reason? : Reason[];
   };
 
   

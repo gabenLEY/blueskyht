@@ -45,7 +45,7 @@ const Login: React.FC = () => {
           <GiNightSky size={50} />
         </div>
         <h2 className="text-2xl font-bold text-center text-blue-500 mb-6">
-          Log in to BskyHT
+          Log in to Htsky
         </h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -53,14 +53,14 @@ const Login: React.FC = () => {
               htmlFor="identifier"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Username
+              Handle
             </label>
             <input
               type="text"
               id="identifier"
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              placeholder="bksky username"
+              placeholder="handle"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
